@@ -1,0 +1,162 @@
+/* ==========================================
+   1. RESET & BASE STYLES
+   ========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #0d1117;
+  color: #c9d1d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ==========================================
+   2. LAYOUT & CONTAINER
+   ========================================== */
+.form-container {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 32px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.form-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.form-header h2 {
+  color: #58a6ff;
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.form-header p {
+  color: #8b949e;
+  font-size: 0.9rem;
+}
+
+/* ==========================================
+   3. FORM GROUPS & INPUTS
+   ========================================== */
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #c9d1d9;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #c9d1d9;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #1f6feb;
+  box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.3);
+}
+
+/* ==========================================
+   4. STYLES VALIDASI & ERROR STATE
+   ========================================== */
+/* Border merah ketika input error */
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+  border-color: #f85149;
+}
+
+/* Shadow merah saat input error difokuskan */
+.form-group.error input:focus,
+.form-group.error select:focus,
+.form-group.error textarea:focus {
+  box-shadow: 0 0 0 3px rgba(248, 81, 73, 0.3);
+}
+
+/* Teks pesan error di bawah input */
+.error-message {
+  color: #f85149;
+  font-size: 0.8rem;
+  margin-top: 6px;
+  display: none;
+}
+
+/* Menampilkan pesan error jika class .error aktif */
+.form-group.error .error-message {
+  display: block;
+}
+
+/* Alert Notifikasi Sukses */
+.alert-success {
+  display: none;
+  background-color: rgba(46, 160, 67, 0.15);
+  border: 1px solid #2ea043;
+  color: #56d364;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ==========================================
+   5. BUTTON STYLES
+   ========================================== */
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #1f6feb 0%, #1158c7 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.btn-submit:hover {
+  opacity: 0.9;
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   6. RESPONSIVE DESIGN
+   ========================================== */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 20px;
+  }
+}
