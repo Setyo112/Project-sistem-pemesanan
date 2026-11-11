@@ -83,6 +83,37 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           if (alertSuccess) {
             alertSuccess.style.display = 'none';
+
+            form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let isValid = true;
+
+    // ... [Tetap jalankan validasi input seperti sebelumnya] ...
+
+    if (isValid) {
+      // 1. Nomor WhatsApp Tujuan (Ganti dengan nomor Anda, format 62...)
+      const nomorWA = '6281234567890';
+
+      // 2. Ambil nilai input
+      const nama = namaInput.value.trim();
+      const email = emailInput.value.trim();
+      const produk = produkSelect.options[produkSelect.selectedIndex].text;
+      const catatan = document.getElementById('catatan').value.trim() || '-';
+
+      // 3. Format pesan teks WhatsApp (menggunakan URL encoding)
+      const pesan = `Halo, saya ingin melakukan pemesanan:%0A%0A` +
+                    `*Nama:* ${encodeURIComponent(nama)}%0A` +
+                    `*Email:* ${encodeURIComponent(email)}%0A` +
+                    `*Paket:* ${encodeURIComponent(produk)}%0A` +
+                    `*Catatan:* ${encodeURIComponent(catatan)}`;
+
+      // 4. Buat tautan WhatsApp API
+      const waUrl = `https://wa.me/${nomorWA}?text=${pesan}`;
+
+      // 5. Buka WhatsApp di tab baru & reset form
+      window.open(waUrl, '_blank');
+      form.reset();
           }
         }, 5000);
       }, 1500);
