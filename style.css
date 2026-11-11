@@ -87,21 +87,18 @@ body {
 /* ==========================================
    4. STYLES VALIDASI & ERROR STATE
    ========================================== */
-/* Border merah ketika input error */
 .form-group.error input,
 .form-group.error select,
 .form-group.error textarea {
   border-color: #f85149;
 }
 
-/* Shadow merah saat input error difokuskan */
 .form-group.error input:focus,
 .form-group.error select:focus,
 .form-group.error textarea:focus {
   box-shadow: 0 0 0 3px rgba(248, 81, 73, 0.3);
 }
 
-/* Teks pesan error di bawah input */
 .error-message {
   color: #f85149;
   font-size: 0.8rem;
@@ -109,12 +106,10 @@ body {
   display: none;
 }
 
-/* Menampilkan pesan error jika class .error aktif */
 .form-group.error .error-message {
   display: block;
 }
 
-/* Alert Notifikasi Sukses */
 .alert-success {
   display: none;
   background-color: rgba(46, 160, 67, 0.15);
