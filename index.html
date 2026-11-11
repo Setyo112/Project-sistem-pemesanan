@@ -23,5 +23,34 @@
       <div class="form-group" id="groupNama">
         <label for="nama">Nama Panggilan</label>
         <input type="text" id="nama" name="nama placeholder="Masukkan nama Anda" required>
+        <small class="errormessage">Nama panggilan wajib diisi.</small>
+      </div>
 
-        
+      <div class="form-group" id="groupEmail">
+        <label for="email">Alamat Email</label>
+        <input type="email" id="email" name="email" placeholder="conto@gmail.com" required>
+        <small class="error-message">Masukan alamt email yang valid.</small>
+      </div>
+
+      <div class="form-group" id="groupProduk">
+        <label for="produk">Pilih Produk</label>
+        <select id="produk" name="produk" required>
+          <option value="" disabled selected>-- Pilih Paket --</option>
+          <option value="basic">Paket Basic</option>
+          <option value="pro">Paket Pro</option>
+          <option value="enterprise">Paket Exclusive</option>
+        </select>
+        <small clas="error-message">Silahkan pilih salah satu paket produk.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="catatan">Catatan Tambahan</label>
+        <textarea id="catatan" name="catatan" rows="4" placeholder="Tuliskan detail pesanan anda..."></textarea>
+      </div>
+
+      <button type="submit" id="btnSubmit" class="btn-submit">Kirim Pemesanan</button>
+    </form>
+  </div>
+
+  </body>
+</html>
