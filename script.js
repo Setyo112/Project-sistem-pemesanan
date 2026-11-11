@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Seleksi Elemen DOM
   const form = document.getElementById('orderForm');
   const namaInput = document.getElementById('nama');
   const emailInput = document.getElementById('email');
@@ -7,13 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const alertSuccess = document.getElementById('alertSuccess');
   const btnSubmit = document.getElementById('btnSubmit');
 
-  // 2. Helper: Helper Validasi Format Email (Regex)
+  // Helper validasi email
   const isValidEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
   };
 
-  // 3. Helper: Menampilkan atau Menghapus Class Error
+  // Helper toggle class error
   const toggleError = (element, isError) => {
     const group = element.parentElement;
     if (isError) {
@@ -23,32 +22,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // 4. Real-time Validation (Menghapus pesan error saat pengguna mulai memperbaiki input)
+  // Real-time error removal
   namaInput.addEventListener('input', () => {
-    if (namaInput.value.trim() !== '') {
-      toggleError(namaInput, false);
-    }
+    if (namaInput.value.trim() !== '') toggleError(namaInput, false);
   });
 
   emailInput.addEventListener('input', () => {
-    if (isValidEmail(emailInput.value.trim())) {
-      toggleError(emailInput, false);
-    }
+    if (isValidEmail(emailInput.value.trim())) toggleError(emailInput, false);
   });
 
   produkSelect.addEventListener('change', () => {
-    if (produkSelect.value !== '') {
-      toggleError(produkSelect, false);
-    }
+    if (produkSelect.value !== '') toggleError(produkSelect, false);
   });
 
-  // 5. Handling Submit Form
+  // Submit Handler
   form.addEventListener('submit', (e) => {
-    e.preventDefault(); // Mencegah reload halaman
+    e.preventDefault();
 
     let isValid = true;
 
-    // Validasi Nama Panggilan
+    // Validasi Nama
     if (namaInput.value.trim() === '') {
       toggleError(namaInput, true);
       isValid = false;
@@ -64,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleError(emailInput, false);
     }
 
-    // Validasi Pilihan Produk
+    // Validasi Produk
     if (produkSelect.value === '') {
       toggleError(produkSelect, true);
       isValid = false;
@@ -72,27 +65,25 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleError(produkSelect, false);
     }
 
-    // Jika seluruh input valid
+    // Jika valid, proses pengiriman
     if (isValid) {
-      // Mengubah state tombol menjadi Loading
       btnSubmit.disabled = true;
       btnSubmit.innerText = 'Mengirim...';
 
-      // Simulasi pengiriman data ke server (delay 1.5 detik)
       setTimeout(() => {
-        // Kembalikan state tombol
         btnSubmit.disabled = false;
         btnSubmit.innerText = 'Kirim Pemesanan';
 
-        // Tampilkan notifikasi sukses
-        alertSuccess.style.display = 'block';
+        if (alertSuccess) {
+          alertSuccess.style.display = 'block';
+        }
 
-        // Reset semua isi form
         form.reset();
 
-        // Sembunyikan notifikasi sukses secara otomatis setelah 5 detik
         setTimeout(() => {
-          alertSuccess.style.display = 'none';
+          if (alertSuccess) {
+            alertSuccess.style.display = 'none';
+          }
         }, 5000);
       }, 1500);
     }
